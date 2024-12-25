@@ -1,0 +1,54 @@
+[package]
+name = "nosferatu"
+version = "0.1.0"
+uthors = ["Michael de Silva <michael@cyberdynea.io>"]
+repository = "https://github.com/bsodmike/nosferatu-rs"
+license = "MIT OR Apache-2.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+nosferatu-core = { path = "./core" }
+
+axum = { version = "^0.7.1", features = ["tower-log", "multipart"] }
+axum-server = "0.7.1"
+axum-extra = "^0.9.6"
+hyper = { version = "^1.5.1", features = ["full"] }
+hyper-rustls = { version = "0.24.0", features = ["http1", "http2"] }
+tokio = {version = "^1.0", features = ["full", "tracing"]}
+
+# Postgres
+sqlx = { version = "^0.8.2", default-features = false, features = [ "runtime-tokio-rustls" , "postgres", "uuid", "chrono", "bigdecimal", "macros"] }
+uuid = { version = "^1.11.0", features = ["serde", "v4"] }
+
+# Logging support
+tracing = "0.1.30"
+tracing-subscriber = { version = "0.3.8", features = ["env-filter"] }
+
+# Axum builds on the types in Tower
+tower = { version = "^0.5.1", features = ["limit", "load-shed", "filter", "util"] }
+tower-http = { version = "^0.6.2", features = ["trace", "cors", "catch-panic", "fs"] }
+
+# Utility crates
+async-trait = "^0.1"
+color-eyre = "0.6.3"
+dotenv = "^0.15"
+exponential-backoff = "^1.0"
+futures = "^0.3"
+log = "0.4.16"
+mongodb =  { version = "3.1.0", features = ["rustls-tls"] }
+reqwest = { version = "0.12", features = ["json"] }
+rustls-native-certs = "^0.7"
+regex = "1.11.0"
+serde = {version = "^1.0", features = ["derive"]}
+serde_json = "^1.0"
+askama = "0.12.1"
+anyhow = "1.0.94"
+tracing-error = "0.2.1"
+
+[dev-dependencies]
+sqlx-cli = { version = "^0.8.2", default-features = false, features = [ "rustls" , "postgres"] }
+
+[profile.release]
+lto = "thin"
+opt-level = 3

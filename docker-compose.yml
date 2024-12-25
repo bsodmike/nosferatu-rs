@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:15.6
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      PGDATA: "/data/postgres"
+    ports:
+      - '15434:5432'
+    volumes: 
+      - ./volumes/postgres:/data/postgres
+      - ./volumes/db_export:/srv/export
+      - ./docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql

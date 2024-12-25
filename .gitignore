@@ -1,0 +1,6 @@
+/target
+/.env.development
+/volumes
+/frontend/node_modules
+/frontend/.nx/*
+/frontend/frontend/react-app/node_modules

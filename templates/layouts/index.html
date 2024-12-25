@@ -1,0 +1,21 @@
+<!doctype html>
+<html class="light">
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://localhost:9002/public/css/output.css" />
+  </head>
+  <body class="bg-white dark:bg-gray-900 min-h-screen flex flex-col justify-between">
+    <section>
+        {{  self::render_nav() }}
+    </section>
+    
+    {% block body_content %}{% endblock %}
+
+    <footer class="bg-zinc-50 text-center dark:bg-neutral-700 lg:text-left">
+      <div class="bg-black/5 p-4 text-center text-surface dark:text-white">
+        &copy; 2024 Copyright <a href="https://desilva.io/about" target="_blank">Michael de Silva</a>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
