@@ -1,6 +1,5 @@
 use crate::error::Error;
 use crate::models::postgres::config::PgConfig;
-use anyhow::anyhow;
 use regex::Captures;
 use regex::Regex;
 use std::env;

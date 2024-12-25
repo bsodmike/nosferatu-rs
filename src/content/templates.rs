@@ -1,12 +1,10 @@
+use crate::utils;
+use crate::utils::logger;
 use askama::Template;
 use axum::response::{IntoResponse, Response};
 use hyper::StatusCode;
 use i18n::I18nBundle;
-use std::collections::HashMap;
 use std::sync::LazyLock;
-// use tokio::sync::Mutex;
-use crate::utils;
-use crate::utils::logger;
 use std::sync::Mutex;
 
 pub mod i18n;

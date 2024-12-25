@@ -1,25 +1,13 @@
 use crate::{config::AppConfig, mpsc::ChannelReceiver, utils::logger};
-use axum::{body::Body, response::Response};
 use content::templates::{i18n::TaggedContentBuilder, I18N_STATIC_CONTENT};
-use dotenv::dotenv;
 use error::Error;
-use futures::stream::{StreamExt, TryStreamExt};
-use hyper::StatusCode;
-use mongodb::{
-    bson::{doc, Document},
-    Client, Collection,
-};
 use mpsc::TxMessage;
-use serde::{Deserialize, Serialize};
-use serde_json::Value;
 use std::sync::LazyLock;
 use std::{
     env,
-    path::{Path, PathBuf},
     sync::Arc,
 };
-use tokio::sync::{mpsc as tokio_mpsc, Mutex};
-use tokio::time;
+use tokio::sync::Mutex;
 
 pub mod config;
 pub mod content;

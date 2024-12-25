@@ -1,9 +1,6 @@
-use crate::{error::Error, APP_CONFIG};
-use std::{
-    fmt::{self, Debug, Display},
-    time::Duration,
-};
-use tokio::{sync::mpsc, task::JoinHandle, time::error::Elapsed};
+use crate::error::Error;
+use std::fmt::{self, Debug};
+use tokio::sync::mpsc;
 
 #[allow(dead_code)]
 pub struct ChannelReceiver {

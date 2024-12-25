@@ -1,6 +1,5 @@
 use crate::error::Error;
 use sqlx::postgres::PgPoolOptions;
-use sqlx::FromRow;
 
 pub mod postgres {
     use super::*;

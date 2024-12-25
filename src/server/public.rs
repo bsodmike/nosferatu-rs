@@ -4,7 +4,7 @@ use nosferatu::prelude::axum_prelude::*;
 use nosferatu::prelude::*;
 use std::net::IpAddr;
 use std::net::SocketAddr;
-use tower_http::services::{ServeDir, ServeFile};
+use tower_http::services::ServeDir;
 use tower_http::trace::TraceLayer;
 
 pub fn public_dir() -> Router {

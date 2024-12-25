@@ -1,9 +1,4 @@
-use askama::Template;
-use axum::response::{IntoResponse, Response};
-use hyper::StatusCode;
 use std::collections::HashMap;
-use std::sync::LazyLock;
-use tokio::sync::Mutex;
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct TaggedContent {

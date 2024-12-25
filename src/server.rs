@@ -1,19 +1,14 @@
-use crate::server::common::return_json;
-use crate::utils::{self, logger};
-use crate::{error::Error, mpsc::TxMessage, AppConfig, APP_CONFIG};
+use crate::{mpsc::TxMessage, AppConfig};
 use axum::{
-    extract::{self, DefaultBodyLimit, Extension, Path},
+    extract::{DefaultBodyLimit, Extension},
     http::HeaderValue,
     response::{IntoResponse, Response},
-    routing::{delete, get, post, Router},
+    routing::{get, Router},
 };
 use hyper::StatusCode;
-use serde::{Deserialize, Serialize};
-use serde_json::json;
+use std::fmt;
 use std::net::IpAddr;
 use std::net::SocketAddr;
-use std::{fmt, str::FromStr};
-use tokio::io::AsyncWriteExt;
 use tokio::sync::mpsc;
 use tower::ServiceBuilder;
 use tower_http::{
@@ -103,12 +98,19 @@ fn api_router() -> Router {
         .route("/health", get(crate::server::common::handle_health_get))
         .route("/", get(handlers::render_index))
         .route("/about", get(handlers::render_about))
-        // .route("/login", get(templates::render_login))
-        .route(
-            "/panic",
-            get(|| async { panic!("panic like it's 1999...") }),
-        )
+        // FIXME: This is for local testing only
+        .route("/panic", get(lets_panic))
         .fallback(crate::content::templates::error_404_template)
+}
+
+async fn lets_panic() -> impl IntoResponse {
+    do_panic()
+}
+
+// Force never type (`!`) to degrade to `()`
+// Ref: https://github.com/rust-lang/rust/issues/123748
+fn do_panic() -> () {
+    panic!("panic like it's 1999...")
 }
 
 #[derive(Clone)]
