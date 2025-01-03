@@ -1,7 +1,7 @@
 [package]
 name = "nosferatu"
 version = "0.1.0"
-uthors = ["Michael de Silva <michael@cyberdynea.io>"]
+authors = ["Michael de Silva <michael@cyberdynea.io>"]
 repository = "https://github.com/bsodmike/nosferatu-rs"
 license = "MIT OR Apache-2.0"
 edition = "2021"
@@ -36,7 +36,6 @@ dotenv = "^0.15"
 exponential-backoff = "^1.0"
 futures = "^0.3"
 log = "0.4.16"
-mongodb =  { version = "3.1.0", features = ["rustls-tls"] }
 reqwest = { version = "0.12", features = ["json"] }
 rustls-native-certs = "^0.7"
 regex = "1.11.0"
